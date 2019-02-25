@@ -36,6 +36,7 @@ data class Point(override val coordinates: Position) : Geometry<Position> {
 
 data class LineString(override val coordinates: Array<Position>) : Geometry<Array<Position>> {
     override val type = "LineString"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -57,6 +58,7 @@ data class LineString(override val coordinates: Array<Position>) : Geometry<Arra
 
 data class Polygon(override val coordinates: Array<Array<Position>>) : Geometry<Array<Array<Position>>> {
     override val type = "Polygon"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -78,6 +80,7 @@ data class Polygon(override val coordinates: Array<Array<Position>>) : Geometry<
 
 data class MultiPoint(override val coordinates: Array<Position>) : Geometry<Array<Position>> {
     override val type = "MultiPoint"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -99,6 +102,7 @@ data class MultiPoint(override val coordinates: Array<Position>) : Geometry<Arra
 
 data class MultiLineString(override val coordinates: Array<Array<Position>>) : Geometry<Array<Array<Position>>> {
     override val type = "MultiLineString"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -120,6 +124,7 @@ data class MultiLineString(override val coordinates: Array<Array<Position>>) : G
 
 data class MultiPolygon(override val coordinates: Array<Array<Array<Position>>>) : Geometry<Array<Array<Array<Position>>>> {
     override val type = "MultiPolygon"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -141,6 +146,7 @@ data class MultiPolygon(override val coordinates: Array<Array<Array<Position>>>)
 
 data class GeometryCollection(val geometries: Array<Geometry<*>>) : GeoJson {
     override val type = "GeometryCollection"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -160,14 +166,15 @@ data class GeometryCollection(val geometries: Array<Geometry<*>>) : GeoJson {
     }
 }
 
-data class Feature(val geometry: Geometry<*>, val properties: Map<String, *> = emptyMap<String, Any>()) : GeoJson {
+data class Feature<G : Geometry<*>>(val geometry: G, val properties: Map<String, *> = emptyMap<String, Any>()) : GeoJson {
     override val type = "Feature"
 
     var id: String? = null
 }
 
-data class FeatureCollection(val features: Array<Feature>) : GeoJson {
+data class FeatureCollection(val features: Array<Feature<*>>) : GeoJson {
     override val type = "FeatureCollection"
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
