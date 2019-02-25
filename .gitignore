@@ -1,0 +1,14 @@
+# Ignore IntelliJ files
+.idea/
+*.iml
+*.ipr
+
+# Ignore IntelliJ build dir
+out/
+
+# Ignore gradle cache
+.gradle/
+
+# Ignore gradle build dir
+build/
+
