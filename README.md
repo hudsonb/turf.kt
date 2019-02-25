@@ -13,11 +13,11 @@ Below's an on going list of the Turf functions which currently exist within turf
 Last updated 02/25/19
   
 ### Measurement
-- [ ] along
+- [x] along
 - [ ] area
 - [ ] bbox
 - [ ] bboxPolygon
-- [ ] bearing
+- [x] bearing
 - [ ] center
 - [ ] centerOfMass
 - [ ] centroid
@@ -165,9 +165,9 @@ See geojson.kt
 - [ ] convertArea
 - [ ] convertLength
 - [x] degreesToRadians -> `Double.toRadians()`
-- [ ] lengthToRadians
+- [x] lengthToRadians
 - [ ] lengthToDegrees
-- [ ] radiansToLength
+- [x] radiansToLength
 - [x] radiansToDegrees -> `Double.toDegrees()`
 - [ ] toMercator
 - [ ] toWgs84
