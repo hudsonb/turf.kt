@@ -5,15 +5,11 @@ import java.lang.IllegalStateException
 
 /**
  * Earth Radius used with the Harvesine formula and approximates using a spherical (non-ellipsoid) Earth.
- * @type {number}
  */
 const val EARTH_RADIUS = 6371008.8
 
 /**
  * Unit of measurement factors using a spherical (non-ellipsoid) earth radius.
- *
- * @memberof helpers
- * @type {Object}
  */
 private val factors = mapOf(
     "centimeters" to EARTH_RADIUS * 100,
@@ -37,11 +33,10 @@ private val factors = mapOf(
  * Convert a distance measurement (assuming a spherical Earth) from radians to a more friendly unit.
  * Valid units: miles, nauticalmiles, inches, yards, meters, metres, kilometers, centimeters, feet
  *
- * @name radiansToLength
- * @param {number} radians in radians across the sphere
- * @param {string} [units="kilometers"] can be degrees, radians, miles, or kilometers inches, yards, metres,
- * meters, kilometres, kilometers.
- * @returns {number} distance
+ * @param radians Radians across the sphere
+ * @param units The length units to convert to. Can be degrees, radians, miles, or kilometers inches, yards, metres,
+ * meters, kilometres, kilometers. Default to kilometers.
+ * @returns The length in the given units.
  */
 fun radiansToLength(radians: Double, units: String = "kilometers"): Double {
     if(!factors.containsKey(units)) throw IllegalArgumentException("Unrecognized units: $units")
@@ -53,11 +48,10 @@ fun radiansToLength(radians: Double, units: String = "kilometers"): Double {
  * Convert a distance measurement (assuming a spherical Earth) from a real-world unit into radians
  * Valid units: miles, nauticalmiles, inches, yards, meters, metres, kilometers, centimeters, feet
  *
- * @name lengthToRadians
- * @param {number} distance in real units
- * @param {string} [units="kilometers"] can be degrees, radians, miles, or kilometers inches, yards, metres,
- * meters, kilometres, kilometers.
- * @returns {number} radians
+ * @param distance The distance in real units
+ * @param units The units of the given distance. Can be degrees, radians, miles, or kilometers inches, yards, metres,
+ * meters, kilometres, kilometers. Defaults to kilometers.
+ * @returns The length in radians.
  */
 fun lengthToRadians(distance: Double, units: String = "kilometers"): Double {
     if(!factors.containsKey(units)) throw IllegalArgumentException("Unrecognized units: $units")
