@@ -32,6 +32,9 @@ data class Point(override val coordinates: Position) : Geometry<Position> {
     constructor(longitude: Double, latitude: Double, elevation: Double = 0.0) : this(Position(longitude, latitude, elevation))
 
     override val type = "Point"
+
+    val coordinate: Position
+        get() = coordinates
 }
 
 data class LineString(override val coordinates: Array<Position>) : Geometry<Array<Position>> {

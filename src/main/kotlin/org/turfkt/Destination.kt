@@ -15,5 +15,13 @@ fun Position.destination(distance: Double, bearing: Double, units: String): Posi
     val lon = rlon + atan2(sin(rbearing) * sin(rdistance) * cos(rlat),
             cos(rdistance) - sin(rlat) * sin(lat))
 
-    return Position(lon.toDegrees(), lat.toDegrees(), 0.0)
+    return Position(lon.toDegrees(), lat.toDegrees(), elevation)
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun Point.destination(distance: Double, bearing: Double, units: String): Position =
+        coordinate.destination(distance, bearing, units)
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun Feature<Point>.destination(distance: Double, bearing: Double, units: String) =
+        geometry.destination(distance, bearing, units)

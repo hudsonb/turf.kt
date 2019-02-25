@@ -14,3 +14,15 @@ fun Position.distance(to: Position): Double {
 
     return radiansToLength(2 * atan2(sqrt(a), sqrt(1 - a)))
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun Position.distance(to: Point) = distance(to.coordinate)
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun Point.distance(to: Position): Double = coordinate.distance(to)
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun Point.distance(to: Point): Double = coordinate.distance(to.coordinate)
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun Feature<Point>.distance(to: Position) = geometry.distance(to)
