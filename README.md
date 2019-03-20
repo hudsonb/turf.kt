@@ -39,7 +39,7 @@ Last updated 02/25/19
 - [ ] cleanCoords
 - [ ] flip
 - [ ] rewind
-- [ ] round
+- [x] ~~round~~ Use Kotlin's `round`
 - [ ] truncate
 
 ### Transformation
