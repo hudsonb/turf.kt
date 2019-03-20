@@ -1,5 +1,9 @@
 package org.turfkt
 
+import geojsonkt.Feature
+import geojsonkt.LineString
+import geojsonkt.Point
+
 fun LineString.along(distance: Double, units: String): Feature<Point> {
     var travelled = 0.0
     for(i in coordinates.indices) {
