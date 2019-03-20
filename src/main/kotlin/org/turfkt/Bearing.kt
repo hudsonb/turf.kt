@@ -1,5 +1,9 @@
 package org.turfkt
 
+import geojsonkt.Feature
+import geojsonkt.Point
+import geojsonkt.Position
+import geojsonkt.coordinate
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin

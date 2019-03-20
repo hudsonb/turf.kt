@@ -1,5 +1,9 @@
 package org.turfkt
 
+import geojsonkt.Feature
+import geojsonkt.Point
+import geojsonkt.Position
+import geojsonkt.coordinate
 import java.lang.Math.toRadians
 import kotlin.math.*
 
