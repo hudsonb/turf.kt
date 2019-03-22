@@ -1,4 +1,4 @@
-# turf.kt
+lean# turf.kt
 
 ### Advanced, cross platform, geospatial analysis for Kotlin.
 
@@ -36,7 +36,7 @@ Last updated 02/25/19
 - [ ] greatCircle
 
 ### Coordinate Mutation
-- [ ] cleanCoords
+- [x] cleanCoords -> clean
 - [ ] flip
 - [ ] rewind
 - [x] ~~round~~ Use Kotlin's `round`
