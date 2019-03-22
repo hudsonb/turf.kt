@@ -24,7 +24,7 @@ Last updated 02/25/19
 - [x] destination
 - [x] distance
 - [ ] envelope
-- [ ] length
+- [x] length
 - [ ] midpoint
 - [ ] pointOnFeature
 - [ ] polygonTangents
@@ -131,12 +131,12 @@ See geojson.kt.
 - [ ] featureReduce
 - [ ] flattenEach
 - [ ] flattenReduce
-- [ ] getCoord
+- [x] ~~getCoord~~
 - [ ] getCoords
-- [ ] getGeom
-- [ ] ~~getType~~ Use `Geometry:type`
+- [x] ~~getGeom~~
+- [x] ~~getType~~
 - [ ] geomEach
-- [ ] geomReduce
+- [x] ~~geomReduce~~
 - [ ] propEach
 - [ ] propReduce
 - [ ] segmentEach
