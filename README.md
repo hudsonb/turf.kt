@@ -1,4 +1,4 @@
-lean# turf.kt
+# turf.kt
 
 ### Advanced, cross platform, geospatial analysis for Kotlin.
 
