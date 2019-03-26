@@ -61,7 +61,7 @@ data class GeometryCollection(val geometries: Array<Geometry>) : GeoJson {
     }
 }
 
-data class Feature<G : Geometry>(val geometry: G, val properties: MutableMap<String, Any> = mutableMapOf()) : GeoJson {
+data class Feature<out G : Geometry>(val geometry: G, val properties: MutableMap<String, Any> = mutableMapOf()) : GeoJson {
     override val type = "Feature"
     var id: String? = null
 
