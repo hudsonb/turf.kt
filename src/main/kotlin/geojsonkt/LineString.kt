@@ -1,6 +1,6 @@
 package geojsonkt
 
-data class LineString(val coordinates: Array<Position>) : Geometry {
+data class LineString(val coordinates: Array<Position>, override val bbox: BBox? = null) : Geometry {
     override val type = "LineString"
 
     override fun equals(other: Any?): Boolean {
@@ -22,6 +22,16 @@ data class LineString(val coordinates: Array<Position>) : Geometry {
     }
 }
 
-operator fun LineString.get(i: Int) = coordinates[i]
+/**
+ * The number of positions in this [LineString].
+ */
+val LineString.size: Int get() = coordinates.size
 
-operator fun LineString.iterator() = coordinates.iterator()
+/**
+ * Returns the range of valid indices for this [LineString].
+ */
+val LineString.indices: IntRange get() = coordinates.indices
+
+operator fun LineString.get(i: Int): Position = coordinates[i]
+
+operator fun LineString.iterator(): Iterator<Position> = coordinates.iterator()

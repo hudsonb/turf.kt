@@ -7,15 +7,19 @@ fun Position(longitude: Double, latitude: Double, elevation: Double = Double.NaN
 inline class Position(private val values: DoubleArray) {
     operator fun get(i: Int) = values[i]
 
-    val longitude
+    val x
         get() = values[0]
 
-    val latitude
+    val y
         get() = values[1]
 
-    val elevation
+    val z
         get() = when {
             values.size >= 3 -> values[2]
             else -> Double.NaN
         }
 }
+
+inline val Position.longitude get() = x
+inline val Position.latitude get() = y
+inline val Position.elevation get() = z

@@ -1,6 +1,6 @@
 package geojsonkt
 
-data class MultiLineString(val coordinates: Array<Array<Position>>) : Geometry {
+data class MultiLineString(val coordinates: Array<Array<Position>>, override val bbox: BBox? = null) : Geometry {
     override val type = "MultiLineString"
 
     override fun equals(other: Any?): Boolean {
@@ -33,27 +33,12 @@ val MultiLineString.size: Int get() = coordinates.size
 val MultiLineString.indices: IntRange get() = coordinates.indices
 
 /**
- * Returns an iterator over the line strings in this [MultiLineString]. Enables [MultiLineString] to be iterated over in for loops.
- */
-operator fun MultiLineString.iterator() = coordinates.iterator()
-
-/**
  * Allows indexed based access to the line strings contained in this [MultiLineString].
  */
-operator fun MultiLineString.get(i: Int) = coordinates[i]
+operator fun MultiLineString.get(i: Int): Array<Position> = coordinates[i]
 
 /**
- * Determines whether or not this [MultiLineString] contains a line string equal to the given linestring.
+ * Returns an iterator over the line strings in this [MultiLineString]. Enables [MultiLineString] to be iterated over in for loops.
  */
-operator fun MultiLineString.contains(ls: Array<Position>) = ls in coordinates
-
-/**
- * Determines whether or not this [MultiLineString] contains a line string equal to the given line string.
- */
-operator fun MultiLineString.contains(ls: LineString) = ls.coordinates in coordinates
-
-/**
- * Determines whether or not this [MultiLineString] contains a line string equal to the features line string geometry.
- */
-operator fun MultiLineString.contains(feature: Feature<LineString>) = feature.geometry.coordinates in coordinates
+operator fun MultiLineString.iterator(): Iterator<Array<Position>> = coordinates.iterator()
 

@@ -1,6 +1,6 @@
 package geojsonkt
 
-data class Polygon(val coordinates: Array<Array<Position>>) : Geometry {
+data class Polygon(val coordinates: Array<Array<Position>>, override val bbox: BBox? = null) : Geometry {
     override val type = "Polygon"
 
     override fun equals(other: Any?): Boolean {
@@ -21,6 +21,21 @@ data class Polygon(val coordinates: Array<Array<Position>>) : Geometry {
         return result
     }
 }
+
+/**
+ * The number of linear rings this [Polygon] is comprised of.
+ */
+val Polygon.size: Int get() = coordinates.size
+
+/**
+ * The range of valid indices for the [Polygon].
+ */
+val Polygon.indices: IntRange get() = coordinates.indices
+
+/**
+ * The exterior ring of this [Polygon].
+ */
+val Polygon.exteriorRing: Array<Position> get() = coordinates[0]
 
 operator fun Polygon.get(i: Int): Array<Position> = coordinates[i]
 
