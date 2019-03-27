@@ -9,8 +9,7 @@ turf.kt uses GeoJSON data classes provided by the geojson.kt project. turf.kt ex
 
 ## Progress
 
-Below's an on going list of the Turf functions which currently exist within turf.kt:
-Last updated 02/25/19
+The list below outlines the Turf functions which currently exist within turf.kt:
   
 ### Measurement
 - [x] along
@@ -36,8 +35,8 @@ Last updated 02/25/19
 - [ ] greatCircle
 
 ### Coordinate Mutation
-- [x] cleanCoords -> clean
-- [ ] flip
+- [x] cleanCoords -> `clean`
+- [x] flip
 - [ ] rewind
 - [x] ~~round~~ Use Kotlin's `round`
 - [ ] truncate
@@ -149,7 +148,7 @@ See geojson.kt.
 See geojson.kt
 
 ### Booleans
-- [ ] booleanClockwise
+- [x] booleanClockwise -> `isClockwise()`/`isCounterClockwise()`
 - [ ] booleanContains
 - [ ] booleanCrosses
 - [ ] booleanDisjoint
