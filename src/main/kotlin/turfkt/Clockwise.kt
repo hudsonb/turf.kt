@@ -1,4 +1,4 @@
-package org.turfkt
+package turfkt
 
 import geojsonkt.Feature
 import geojsonkt.LineString

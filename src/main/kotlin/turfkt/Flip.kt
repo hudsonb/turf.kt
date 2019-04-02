@@ -1,7 +1,6 @@
-package org.turfkt
+package turfkt
 
 import geojsonkt.*
-import java.lang.UnsupportedOperationException
 
 /**
  * Returns a new [Point] with the x and y components flipped.

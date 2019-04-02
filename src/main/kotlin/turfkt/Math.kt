@@ -1,4 +1,4 @@
-package org.turfkt
+package turfkt
 
 import kotlin.math.PI
 

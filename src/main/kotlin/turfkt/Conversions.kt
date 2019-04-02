@@ -1,7 +1,4 @@
-package org.turfkt
-
-import java.lang.IllegalArgumentException
-import java.lang.IllegalStateException
+package turfkt
 
 /**
  * Earth Radius used with the Harvesine formula and approximates using a spherical (non-ellipsoid) Earth.

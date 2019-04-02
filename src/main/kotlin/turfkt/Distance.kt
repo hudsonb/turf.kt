@@ -1,6 +1,7 @@
-package org.turfkt
+package turfkt
 
 import geojsonkt.*
+
 import java.lang.Math.toRadians
 import kotlin.math.*
 
