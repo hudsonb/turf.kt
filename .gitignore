@@ -12,3 +12,7 @@ out/
 # Ignore gradle build dir
 build/
 
+
+META-INF/
+
+geojsonkt/
