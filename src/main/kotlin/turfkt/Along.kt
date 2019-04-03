@@ -2,28 +2,47 @@ package turfkt
 
 import geojsonkt.Feature
 import geojsonkt.LineString
-import geojsonkt.Point
+import geojsonkt.Position
 
-fun LineString.along(distance: Double, units: String): Feature<Point> {
+/**
+ * Returns a [Position] at a specified distance along this [LineString].
+ *
+ * @param distance The distance along the [LineString]
+ * @param units The units in which the [distance] is provided.
+ */
+fun LineString.along(distance: Double, units: String): Position = coordinates.along(distance, units)
+
+/**
+ * Returns a [Position] at a specified distance along this [LineString].
+ *
+ * @param distance The distance along the [LineString]
+ * @param units The units in which the [distance] is provided.
+ */
+fun Feature<LineString>.along(distance: Double, units: String): Position =
+        geometry.along(distance, units)
+
+/**
+ * Returns a [Position] at a specified distance along the line represented by this array.
+ *
+ * @param distance The distance along the line.
+ * @param units The units in which the [distance] is provided.
+ */
+fun Array<Position>.along(distance: Double, units: String): Position {
     var travelled = 0.0
-    for(i in coordinates.indices) {
-        if(distance >= travelled && i == coordinates.lastIndex) break
+    for(i in indices) {
+        if(distance >= travelled && i == lastIndex) break
 
-        if(distance == travelled) return Feature(Point(coordinates[i]))
+        if(distance == travelled) return get(i)
 
         if(travelled > distance) {
             val overshot = distance - travelled
-            val direction = coordinates[i].bearing(coordinates[i - 1]) - 180
-            val interpolated = coordinates[i].destination(overshot, direction, units)
-            return Feature(Point(interpolated))
+            val direction = get(i).bearing(get(i - 1)) - 180
+            val interpolated = get(i).destination(overshot, direction, units)
+            return interpolated
         }
 
-        travelled += coordinates[i].distance(coordinates[i + 1])
+        travelled += get(i).distance(get(i + 1))
     }
 
-    return Feature(Point(coordinates.last()))
+    return last()
 }
-
-@Suppress("NOTHING_TO_INLINE")
-inline fun Feature<LineString>.along(distance: Double, units: String): Feature<Point> =
-        geometry.along(distance, units)

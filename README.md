@@ -152,7 +152,7 @@ See geojson.kt
 - [ ] booleanContains
 - [ ] booleanCrosses
 - [ ] booleanDisjoint
-- [ ] booleanEqual
+- [x] booleanEqual -> `==`, `!=`
 - [ ] booleanOverlap
 - [ ] booleanParallel
 - [ ] booleanPointInPolygon
