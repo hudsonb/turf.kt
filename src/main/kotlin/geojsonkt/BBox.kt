@@ -25,7 +25,7 @@ inline class BBox(private val values: DoubleArray) {
             else -> throw IllegalStateException("Unexpected number of values, 4 or 6 expected but ${values.size} were found.")
         }
 
-    val northWest: Position
+    val northEast: Position
         get()  = when(values.size) {
             4 -> Position(values[2], values[3])
             6 -> Position(values[3], values[4], values[5])

@@ -13,7 +13,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
   
 ### Measurement
 - [x] along
-- [ ] area
+- [x] area
 - [ ] bbox
 - [ ] bboxPolygon
 - [x] bearing
@@ -31,7 +31,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [ ] rhumbBearing
 - [ ] rhumbDestination
 - [ ] rhumbDistance
-- [ ] square
+- [x] square
 - [ ] greatCircle
 
 ### Coordinate Mutation
