@@ -64,7 +64,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 ### Feature Conversion
 - [ ] combine
 - [ ] explode
-- [ ] flatten
+- [x] flatten
 - [ ] lineToPolygon
 - [ ] polygonize
 - [ ] polygonToLine
