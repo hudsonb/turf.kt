@@ -1,40 +1,31 @@
 package geojsonkt
 
-import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte1.other
+data class GeometryCollection(val geometries: ArrayList<Geometry>, override val bbox: BBox? = null) :
+        MutableList<Geometry> by geometries,
+        Geometry {
 
+    constructor(geometries: Collection<Geometry>, bbox: BBox? = null) : this(ArrayList(geometries), bbox)
 
-data class GeometryCollection(val geometries: Array<Geometry>, override val bbox: BBox? = null) : Geometry {
     override val type = "GeometryCollection"
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if(this === other) return true
+        if(javaClass != other?.javaClass) return false
 
         other as GeometryCollection
 
-        if (!geometries.contentEquals(other.geometries)) return false
-        if (type != other.type) return false
+        if(type != other.type) return false
+        if(geometries != other.geometries) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = geometries.contentHashCode()
+        var result = geometries.hashCode()
         result = 31 * result + type.hashCode()
         return result
     }
 }
-
-val GeometryCollection.size: Int get() = geometries.size
-
-val GeometryCollection.indices: IntRange get() = geometries.indices
-
-operator fun GeometryCollection.get(i: Int) = geometries[i]
-
-operator fun GeometryCollection.iterator(): Iterator<Geometry> = geometries.iterator()
-
-operator fun GeometryCollection.plus(other: GeometryCollection): GeometryCollection =
-        GeometryCollection(geometries + other.geometries)
 
 fun GeometryCollection.toFeature(properties: MutableMap<String, Any> = mutableMapOf()): Feature<GeometryCollection> =
         Feature(this, properties)
@@ -54,5 +45,10 @@ fun GeometryCollection.toFeatureCollection(properties: MutableMap<String, Any> =
         }
     }
 
-    return FeatureCollection(features.toTypedArray())
+    return FeatureCollection(features)
 }
+
+/**
+ * Returns a geometry collection containing the specified geometries.
+ */
+fun geometryCollectionOf(vararg geometries: Geometry) = GeometryCollection(geometries.toList())
