@@ -45,8 +45,8 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [ ] bboxClip
 - [ ] bezierSpline
 - [ ] buffer
-- [ ] circle
-- [ ] clone
+- [x] circle
+- [x] clone Use `copy`
 - [ ] concave
 - [ ] convex
 - [ ] difference
