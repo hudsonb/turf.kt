@@ -1,7 +1,7 @@
 package geojsonkt
 
 
-data class GeometryCollection(val geometries: Array<Geometry>, override val bbox: BBox? = null) : GeoJson {
+data class GeometryCollection(val geometries: Array<Geometry>, override val bbox: BBox? = null) : Geometry {
     override val type = "GeometryCollection"
 
     override fun equals(other: Any?): Boolean {

@@ -19,7 +19,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [x] bearing
 - [ ] center
 - [ ] centerOfMass
-- [ ] centroid
+- [x] centroid
 - [x] destination
 - [x] distance
 - [ ] envelope
