@@ -1,8 +1,5 @@
 package geojsonkt
 
-import javafx.geometry.Pos
-import java.lang.IllegalStateException
-
 fun BBox(swlon: Double, swlat: Double, nelon: Double, nelat: Double) =
         BBox(doubleArrayOf(swlon, swlat, nelon, nelat))
 
