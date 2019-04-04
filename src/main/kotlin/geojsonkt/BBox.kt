@@ -1,5 +1,6 @@
 package geojsonkt
 
+import javafx.geometry.Pos
 import java.lang.IllegalStateException
 
 fun BBox(swlon: Double, swlat: Double, nelon: Double, nelat: Double) =
@@ -31,5 +32,19 @@ inline class BBox(private val values: DoubleArray) {
             6 -> Position(values[3], values[4], values[5])
             else -> throw IllegalStateException("Unexpected number of values, 4 or 6 expected but ${values.size} were found.")
         }
+}
+
+/**
+ * Returns a [Polygon] equivalent to this [BBox].
+ */
+fun BBox.asPolygon(): Polygon {
+    val north = northEast.latitude
+    val east = northEast.longitude
+    val west = southWest.longitude
+    val south = southWest.latitude
+    val northWest = Position(west, north)
+    val southEast = Position(east, south)
+
+    return Polygon(arrayOf(arrayOf(northWest, northEast, southEast, southWest, northWest)))
 }
 

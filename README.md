@@ -15,7 +15,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [x] along
 - [x] area
 - [ ] bbox
-- [ ] bboxPolygon
+- [x] bboxPolygon
 - [x] bearing
 - [ ] center
 - [ ] centerOfMass
