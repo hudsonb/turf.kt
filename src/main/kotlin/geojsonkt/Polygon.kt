@@ -37,6 +37,14 @@ val Polygon.indices: IntRange get() = coordinates.indices
  */
 val Polygon.exteriorRing: Array<Position> get() = coordinates[0]
 
+/**
+ * Wraps this [LineString] in a [Feature] with the given properties (optional).
+ *
+ * @return A [Feature] wrapping this [LineString].
+ */
+fun Polygon.toFeature(properties: MutableMap<String, Any> = mutableMapOf()): Feature<Polygon> =
+        Feature(this, properties)
+
 operator fun Polygon.get(i: Int): Array<Position> = coordinates[i]
 
 operator fun Polygon.iterator(): Iterator<Array<Position>> = coordinates.iterator()

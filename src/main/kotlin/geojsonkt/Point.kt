@@ -13,3 +13,11 @@ inline val Point.elevation get() = coordinate.elevation
 inline val Point.y get() = coordinate.latitude
 inline val Point.x get() = coordinate.longitude
 inline val Point.z get() = coordinate.elevation
+
+/**
+ * Wraps this [Point] in a [Feature] with the given properties (optional).
+ *
+ * @return A [Feature] wrapping this [Point].
+ */
+fun Point.toFeature(properties: MutableMap<String, Any> = mutableMapOf()): Feature<Point> =
+        Feature(this, properties)

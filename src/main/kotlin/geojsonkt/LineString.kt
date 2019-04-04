@@ -32,6 +32,14 @@ val LineString.size: Int get() = coordinates.size
  */
 val LineString.indices: IntRange get() = coordinates.indices
 
+/**
+ * Wraps this [LineString] in a [Feature] with the given properties (optional).
+ *
+ * @return A [Feature] wrapping this [LineString].
+ */
+fun LineString.toFeature(properties: MutableMap<String, Any> = mutableMapOf()): Feature<LineString> =
+        Feature(this, properties)
+
 operator fun LineString.get(i: Int): Position = coordinates[i]
 
 operator fun LineString.iterator(): Iterator<Position> = coordinates.iterator()

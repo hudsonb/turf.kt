@@ -33,6 +33,14 @@ val MultiLineString.size: Int get() = coordinates.size
 val MultiLineString.indices: IntRange get() = coordinates.indices
 
 /**
+ * Wraps this [MultiLineString] in a [Feature] with the given properties (optional).
+ *
+ * @return A [Feature] wrapping this [MultiLineString].
+ */
+fun MultiLineString.toFeature(properties: MutableMap<String, Any> = mutableMapOf()): Feature<MultiLineString> =
+        Feature(this, properties)
+
+/**
  * Allows indexed based access to the line strings contained in this [MultiLineString].
  */
 operator fun MultiLineString.get(i: Int): Array<Position> = coordinates[i]
