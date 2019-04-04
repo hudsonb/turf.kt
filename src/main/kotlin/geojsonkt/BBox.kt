@@ -37,7 +37,7 @@ inline class BBox(private val values: DoubleArray) {
 /**
  * Returns a [Polygon] equivalent to this [BBox].
  */
-fun BBox.asPolygon(): Polygon {
+fun BBox.toPolygon(): Polygon {
     val north = northEast.latitude
     val east = northEast.longitude
     val west = southWest.longitude
@@ -45,6 +45,6 @@ fun BBox.asPolygon(): Polygon {
     val northWest = Position(west, north)
     val southEast = Position(east, south)
 
-    return Polygon(arrayOf(arrayOf(northWest, northEast, southEast, southWest, northWest)))
+    return Polygon(arrayOf(arrayOf(northWest, southWest, southEast, northEast, northWest)))
 }
 
