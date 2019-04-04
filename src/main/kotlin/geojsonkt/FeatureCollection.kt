@@ -1,31 +1,33 @@
 package geojsonkt
 
-data class FeatureCollection(val features: Array<Feature<*>>, override val bbox: BBox? = null) : GeoJson {
+data class FeatureCollection(val features: ArrayList<Feature<*>>, override val bbox: BBox? = null) :
+        MutableList<Feature<*>> by features,
+        GeoJson {
+
+    constructor(features: Collection<Feature<*>>, bbox: BBox? = null) : this(ArrayList(features), bbox)
+
     override val type = "FeatureCollection"
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if(this === other) return true
+        if(javaClass != other?.javaClass) return false
 
         other as FeatureCollection
 
-        if (!features.contentEquals(other.features)) return false
-        if (type != other.type) return false
+        if(type != other.type) return false
+        if(features != other.features) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = features.contentHashCode()
+        var result = features.hashCode()
         result = 31 * result + type.hashCode()
         return result
     }
 }
 
-val FeatureCollection.size: Int get() = features.size
-
-val FeatureCollection.indices: IntRange get() = features.indices
-
-operator fun FeatureCollection.get(i: Int) = features[i]
-
-operator fun FeatureCollection.iterator(): Iterator<Feature<*>> = features.iterator()
+/**
+ * Returns a feature collection containing the specified features.
+ */
+fun featureCollectionOf(vararg features: Feature<*>) = FeatureCollection(features.toList())
