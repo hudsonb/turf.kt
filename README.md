@@ -75,7 +75,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [ ] lineChunk
 - [ ] lineIntersect
 - [ ] lineOverlap
-- [ ] lineSegment
+- [x] lineSegment -> `segment`
 - [ ] lineSlice
 - [ ] lineSliceAlong
 - [ ] lineSplit
