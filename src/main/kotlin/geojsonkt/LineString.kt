@@ -1,6 +1,8 @@
 package geojsonkt
 
 data class LineString(val coordinates: Array<Position>, override val bbox: BBox? = null) : Geometry {
+    companion object;
+
     override val type = "LineString"
 
     override fun equals(other: Any?): Boolean {

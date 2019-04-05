@@ -5,6 +5,8 @@ fun Position(longitude: Double, latitude: Double, elevation: Double = Double.NaN
 
 @Suppress("NON_PUBLIC_PRIMARY_CONSTRUCTOR_OF_INLINE_CLASS")
 inline class Position(private val values: DoubleArray) {
+    companion object;
+
     operator fun get(i: Int) = values[i]
 
     val x

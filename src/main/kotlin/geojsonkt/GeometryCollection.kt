@@ -3,6 +3,7 @@ package geojsonkt
 data class GeometryCollection(val geometries: ArrayList<Geometry>, override val bbox: BBox? = null) :
         MutableList<Geometry> by geometries,
         Geometry {
+    companion object;
 
     constructor(geometries: Collection<Geometry>, bbox: BBox? = null) : this(ArrayList(geometries), bbox)
 

@@ -1,6 +1,8 @@
 package geojsonkt
 
 data class Point(val coordinates: Position, override val bbox: BBox? = null) : Geometry {
+    companion object;
+
     constructor(longitude: Double, latitude: Double, elevation: Double = 0.0) : this(Position(longitude, latitude, elevation))
 
     override val type = "Point"
