@@ -2,7 +2,6 @@ package turfkt
 
 import geojsonkt.*
 
-import java.lang.Math.toRadians
 import kotlin.math.*
 
 /**
@@ -14,10 +13,10 @@ import kotlin.math.*
  * [units] The units in which the distance is returned. Can be degrees, radians, miles or kilometers. Default is kilometers.
  */
 fun Position.distance(to: Position, units: String = "kilometers"): Double {
-    val dlat = toRadians(to.latitude - latitude)
-    val dlon = toRadians(to.longitude - longitude)
-    val fromLat = toRadians(latitude)
-    val toLat = toRadians(to.latitude)
+    val dlat = (to.latitude - latitude).toRadians()
+    val dlon = (to.longitude - longitude).toRadians()
+    val fromLat = (latitude).toRadians()
+    val toLat = (to.latitude).toRadians()
 
     val a = sin(dlat / 2).pow(2) *
             sin(dlon / 2).pow(2) * cos(fromLat) * cos(toLat)

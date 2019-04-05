@@ -1,7 +1,6 @@
 package turfkt
 
 import geojsonkt.*
-import java.lang.UnsupportedOperationException
 
 /**
  * Returns the centroid using the mean of all vertices.
