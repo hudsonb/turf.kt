@@ -71,7 +71,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 
 ### Misc
 - [ ] kinks
-- [ ] lineArc
+- [x] lineArc -> `arc`
 - [ ] lineChunk
 - [ ] lineIntersect
 - [ ] lineOverlap
