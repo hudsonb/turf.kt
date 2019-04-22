@@ -29,7 +29,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [ ] polygonTangents
 - [ ] pointToLineDistance
 - [ ] rhumbBearing
-- [ ] rhumbDestination
+- [x] rhumbDestination
 - [ ] rhumbDistance
 - [x] square
 - [ ] greatCircle

@@ -55,3 +55,17 @@ fun lengthToRadians(distance: Double, units: String = "kilometers"): Double {
     val factor = factors[units] ?: throw IllegalStateException("Factor for units $units was null")
     return distance / factor
 }
+
+/**
+ * Converts a length to the requested unit.
+ * Valid units: miles, nauticalmiles, inches, yards, meters, metres, kilometers, centimeters, feet
+ *
+ * @param length length to be converted
+ * @param originalUnit [originalUnit="kilometers"] of the length
+ * @param finalUnit [finalUnit="kilometers"] returned unit
+ * @return the converted length
+ */
+fun convertLength(length: Double, originalUnit: String = "kilometers", finalUnit: String = "kilometers"): Double {
+    require(length >= 0) { "length must be a positive number" }
+    return radiansToLength(lengthToRadians(length, originalUnit), finalUnit)
+}
