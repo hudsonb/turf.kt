@@ -7,11 +7,11 @@ import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 
-fun Position.destination(distance: Double, bearing: Double, units: String): Position {
+fun Position.destination(distance: Double, bearing: Double, units: String = "kilometers"): Position {
     val rlon = longitude.toRadians()
     val rlat = latitude.toRadians()
     val rbearing = bearing.toRadians()
-    val rdistance = lengthToRadians(distance)
+    val rdistance = lengthToRadians(distance, units)
 
     val lat = asin(sin(rlat) * cos(rdistance) + cos(rlat) * sin(rdistance) * cos(rbearing))
     val lon = rlon + atan2(sin(rbearing) * sin(rdistance) * cos(rlat),
@@ -21,9 +21,9 @@ fun Position.destination(distance: Double, bearing: Double, units: String): Posi
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun Point.destination(distance: Double, bearing: Double, units: String): Position =
+inline fun Point.destination(distance: Double, bearing: Double, units: String = "kilometers"): Position =
         coordinate.destination(distance, bearing, units)
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun Feature<Point>.destination(distance: Double, bearing: Double, units: String) =
+inline fun Feature<Point>.destination(distance: Double, bearing: Double, units: String = "kilometers") =
         geometry.destination(distance, bearing, units)
