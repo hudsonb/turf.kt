@@ -1,5 +1,8 @@
 package geojsonkt
 
+import kotlin.Double.Companion.POSITIVE_INFINITY
+import kotlin.Double.Companion.NEGATIVE_INFINITY
+
 fun BBox(swlon: Double, swlat: Double, nelon: Double, nelat: Double) =
         BBox(doubleArrayOf(swlon, swlat, nelon, nelat))
 
@@ -47,3 +50,39 @@ fun BBox.toPolygon(): Polygon {
     return Polygon(arrayOf(arrayOf(northWest, southWest, southEast, northEast, northWest)))
 }
 
+fun GeoJson.bbox(): BBox {
+    when(this) {
+        is Point -> return bbox(coords(this))
+        is LineString -> return bbox(coords(this))
+        is Polygon -> return bbox(coords(this))
+        is MultiPoint -> return bbox(coords(this))
+        is MultiLineString -> return bbox(coords(this))
+        is MultiPolygon -> return bbox(coords(this))
+        is GeometryCollection -> return bbox(coords(this))
+        else -> throw UnsupportedOperationException("Can not calculate BBox of unrecognized Geometry type: ${this::class.java.name}")
+    }
+}
+
+private fun bbox(coords: Sequence<Position>): BBox {
+    var result = doubleArrayOf(POSITIVE_INFINITY, POSITIVE_INFINITY, NEGATIVE_INFINITY, NEGATIVE_INFINITY)
+
+    for(coord in coords) {
+            if (result[0] > coord[0]) { result[0] = coord[0] }
+            if (result[1] > coord[1]) { result[1] = coord[1] }
+            if (result[2] < coord[0]) { result[2] = coord[0] }
+            if (result[3] < coord[1]) { result[3] = coord[1] }
+    }
+
+    return BBox(result)
+}
+
+private fun coords(g: Geometry): Sequence<Position> = when(g) {
+    is Point -> arrayOf(g.coordinate).asSequence()
+    is LineString -> g.coordinates.asSequence()
+    is Polygon -> g.coordinates.first().asSequence()
+    is MultiPoint -> g.coordinates.asSequence()
+    is MultiLineString -> g.coordinates.flatten().asSequence()
+    is MultiPolygon -> g.coordinates.flatMap { it.first().toList() }.asSequence()
+    is GeometryCollection -> g.geometries.asSequence().map { coords(it) }.flatten()
+    else -> emptySequence()
+}
