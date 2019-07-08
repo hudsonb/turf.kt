@@ -32,7 +32,7 @@ fun Position.rhumbDistance(to: Position, units: String = "kilometers"): Double {
  * @name rhumbDistance
  * @param to destination point
  * @param units The desired units. Can be degrees, radians, miles, or kilometers
- * @return The distance between the two points in the givne units
+ * @return The distance between the two points in the given units
  */
 fun Position.rhumbDistance(to: Point, units: String = "kilometers"): Double =
         rhumbDistance(to.coordinate, units)
