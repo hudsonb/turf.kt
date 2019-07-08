@@ -1,6 +1,6 @@
 package geojsonkt
 
-data class LineString(val coordinates: Array<Position>, override val bbox: BBox? = null) : Geometry {
+data class LineString(val coordinates: Array<Position>) : Geometry {
     companion object;
 
     override val type = "LineString"

@@ -1,11 +1,16 @@
 package geojsonkt
 
-data class FeatureCollection(val features: ArrayList<Feature<*>>, override val bbox: BBox? = null) :
+/**
+ * Returns a feature collection containing the specified features.
+ */
+fun featureCollectionOf(vararg features: Feature<*>) = FeatureCollection(features.toList())
+
+data class FeatureCollection(val features: ArrayList<Feature<*>>) :
         MutableList<Feature<*>> by features,
         GeoJson {
     companion object;
 
-    constructor(features: Collection<Feature<*>>, bbox: BBox? = null) : this(ArrayList(features), bbox)
+    constructor(features: Collection<Feature<*>>, bbox: BBox? = null) : this(ArrayList(features))
 
     override val type = "FeatureCollection"
 
@@ -30,6 +35,7 @@ data class FeatureCollection(val features: ArrayList<Feature<*>>, override val b
 }
 
 /**
- * Returns a feature collection containing the specified features.
+ * Returns a GeometryCollection consisting of the geometry of each feature in this collection.
  */
-fun featureCollectionOf(vararg features: Feature<*>) = FeatureCollection(features.toList())
+fun FeatureCollection.toGeometryCollection() =
+    GeometryCollection(features.map { it.geometry })

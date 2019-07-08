@@ -1,6 +1,6 @@
 package geojsonkt
 
-data class MultiLineString(val coordinates: Array<Array<Position>>, override val bbox: BBox? = null) : Geometry {
+data class MultiLineString(val coordinates: Array<Array<Position>>) : Geometry {
     companion object;
 
     override val type = "MultiLineString"

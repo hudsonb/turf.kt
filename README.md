@@ -14,7 +14,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 ### Measurement
 - [x] along
 - [x] area
-- [ ] bbox
+- [x] bbox
 - [x] bboxPolygon -> `BBox:toPolygon`
 - [x] bearing
 - [ ] center

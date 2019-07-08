@@ -1,6 +1,6 @@
 package geojsonkt
 
-data class MultiPolygon(val coordinates: Array<Array<Array<Position>>>, override val bbox: BBox? = null) : Geometry {
+data class MultiPolygon(val coordinates: Array<Array<Array<Position>>>) : Geometry {
     companion object;
 
     override val type = "MultiPolygon"
