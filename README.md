@@ -22,9 +22,9 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [x] centroid
 - [x] destination
 - [x] distance
-- [ ] envelope
+- [x] envelope
 - [x] length
-- [ ] midpoint
+- [x] midpoint
 - [ ] pointOnFeature
 - [ ] polygonTangents
 - [ ] pointToLineDistance
