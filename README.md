@@ -17,7 +17,7 @@ The list below outlines the Turf functions which currently exist within turf.kt:
 - [x] bbox
 - [x] bboxPolygon -> `BBox:toPolygon`
 - [x] bearing
-- [ ] center
+- [x] center
 - [ ] centerOfMass
 - [x] centroid
 - [x] destination
